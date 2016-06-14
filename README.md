@@ -1,4 +1,3 @@
-# weather_forecast
 Application which visualizes weather forecast data
 
 Web application which visualizes weather forecast data for following locations: Kyiv, Lviv, Odessa.
