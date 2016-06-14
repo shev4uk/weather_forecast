@@ -1,0 +1,8 @@
+{
+  "name": "test",
+  "dependencies": {
+    "angular": "~1.5.5",
+    "d3": "^3.5.17",
+    "angular-nvd3": "^1.0.7"
+  }
+}

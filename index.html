@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Weather</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/lib/nvd3/build/nv.d3.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body ng-cloak>
+  <div class="page">
+    <p class="title_page">Weather Forecast</p>
+    <div class="container" ng-controller="myWeatherCtrl">
+      <div class="wrap_select">
+        <span class="label_select">Select city: </span>
+        <select class="select_city" ng-model="selectCity" ng-options="city.id as city.name for city in cities" ng-change="update()"></select>
+      </div>
+      <p class="title_block">Temperature</p>
+      <div class="wrap_chart">
+        <nvd3 options="options" data="data"></nvd3>
+      </div>
+      <p class="title_block">Additional Data</p>
+      <div class="wrap_data_weather_block">
+        <div class="data_weather_block weather_conditions">
+          <p class="title_data_weather_block">weather conditions</p>
+          <div class="item_weather" ng-repeat="weather in data_weather">
+            <p class="data_weather">{{weather.dt_txt | filterDate}}</p>
+            <p class="value_weather">{{weather.weather[0].main}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="wrap_data_weather_block">
+        <div class="data_weather_block weather_humidity">
+          <p class="title_data_weather_block">humidity</p>
+          <div class="item_weather" ng-repeat="weather in data_weather">
+            <p class="data_weather">{{weather.dt_txt | filterDate}}</p>
+            <p class="value_weather">{{weather.main.humidity}} %</p>
+          </div>
+        </div>
+      </div>
+      <div class="wrap_data_weather_block">
+        <div class="data_weather_block weather_wind_speed">
+          <p class="title_data_weather_block">wind speed</p>
+          <div class="item_weather" ng-repeat="weather in data_weather">
+            <p class="data_weather">{{weather.dt_txt | filterDate}}</p>
+            <p class="value_weather">{{weather.wind.speed | number:2}} m/s</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/lib/angular/angular.min.js"></script>
+  <script src="assets/lib/d3/d3.js"></script>
+  <script src="assets/lib/nvd3/build/nv.d3.js"></script>
+  <script src="assets/lib/angular-nvd3/dist/angular-nvd3.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>
